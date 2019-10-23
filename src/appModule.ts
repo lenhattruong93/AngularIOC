@@ -29,7 +29,7 @@ export class AppModule {
     ngDoBootstrap():void{
         let resource : IResourceService = window.ioc.resolve("ResourceService");
         let self = this;
-        resource.loadLocale("course").then(()=>{
+        resource.loadLocale("learning").then(()=>{
             self.appRef.bootstrap(Layout);
         });
     }

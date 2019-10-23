@@ -8,9 +8,9 @@ import {BasePage} from "../../common/basePage";
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>{{i18n.learning.pages.courses.firstName}}</th>
+                        <th>{{i18n.learning.pages.courses.lastName}}</th>
+                        <th>{{i18n.learning.pages.courses.userName}}</th>
                     </tr>
                 </thead>
                 <tbody>
