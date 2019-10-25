@@ -1,9 +1,13 @@
-System.register([], function (exports_1, context_1) {
+System.register(["./builder/iocBuilderFactory"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var IoCContainerFactory, IoCContainer;
+    var iocBuilderFactory_1, IoCContainerFactory, IoCContainer;
     return {
-        setters: [],
+        setters: [
+            function (iocBuilderFactory_1_1) {
+                iocBuilderFactory_1 = iocBuilderFactory_1_1;
+            }
+        ],
         execute: function () {
             IoCContainerFactory = /** @class */ (function () {
                 function IoCContainerFactory() {
@@ -31,15 +35,28 @@ System.register([], function (exports_1, context_1) {
                         }
                     });
                     if (!!localItem) {
-                        if (localItem.lifecycle == "Transient") {
-                            return new localItem.instanceOf();
-                        }
-                        if (localItem.lifecycle == "Singleton") {
-                            if (!localItem.instance) {
-                                localItem.instance = new localItem.instanceOf();
-                            }
-                            return localItem.instance;
-                        }
+                        // if (localItem.lifecycle == "Transient") {
+                        //   builder = new IoCTransientBuilder(localItem);
+                        //     // return new localItem.instanceOf();
+                        // }
+                        // if (localItem.lifecycle == "Singleton") {
+                        //      builder = new IoCSingletonBuilder(localItem);
+                        //   //  return builder.build();
+                        //     // if (!localItem.instance) {
+                        //     //     localItem.instance = new localItem.instanceOf();
+                        //     // }
+                        //     // return localItem.instance;
+                        // }
+                        var builder = iocBuilderFactory_1.IoCBuilderFactory.create(localItem);
+                        // switch(localItem.lifecycle){
+                        //     case "Transient": 
+                        //         builder = new IoCTransientBuilder(localItem);
+                        //         break;
+                        //     case "Singleton": 
+                        //         builder = new IoCSingletonBuilder(localItem);
+                        //         break;
+                        // }
+                        return builder.build();
                     }
                 };
                 IoCContainer.prototype.setInjector = function (injector) {
