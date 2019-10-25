@@ -28,7 +28,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
                 Page = __decorate([
                     core_1.Component({
                         selector: "page",
-                        template: "\n        <div class=\"x_panel\">\n                  <div class=\"x_title\">\n                    <h2>{{title}}</h2>                    \n                    <div class=\"clearfix\"></div>\n                  </div>\n                  <div class=\"x_content\">\n                        <ng-content></ng-content>\n                  </div>\n                </div>\n        "
+                        template: "\n        <div class=\"x_panel\">\n          <div class=\"x_title\">\n            <h2>{{title}}</h2>                    \n            <div class=\"clearfix\"></div>\n          </div>\n          <div class=\"x_content\">\n                <ng-content></ng-content>\n          </div>\n        </div>\n        "
                     })
                 ], Page);
                 return Page;

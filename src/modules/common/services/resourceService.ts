@@ -3,7 +3,7 @@ import {Promise} from "../models/promise";
 import {PromiseFactory} from "../models/promiseFactory";
 import {IConnector} from "../services/iconnector";
 export class ResourceService implements IResourceService {
-    public locales:any;
+    public locales:any={};
     public getLocales():any {
         return this.locales;
     }

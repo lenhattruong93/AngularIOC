@@ -25,8 +25,8 @@ System.register(["@angular/core", "@angular/router", "./pages/courses", "../comm
         ],
         execute: function () {
             routes = [
-                { path: "", redirectTo: "course", pathMatch: "full" },
-                { path: "course", component: courses_1.Courses }
+                { path: "", redirectTo: "courses", pathMatch: "full" },
+                { path: "courses", component: courses_1.Courses }
             ];
             LearningRoutes = /** @class */ (function () {
                 function LearningRoutes() {

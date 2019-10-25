@@ -9,4 +9,6 @@ declare interface IIoCContainer{
 declare interface IIoCRegistration{
     name:string;
     instanceOf:any;
+    instance?:any;
+    lifecycle:string;
 }
