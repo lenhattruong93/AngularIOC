@@ -1,13 +1,14 @@
 import { IoCTransientBuilder } from "./iocTransientBuilder";
 import { IoCSingletonBuilder } from "./iocSingletonBuilder";
 import { IBuilder } from "./ibuilder";
+import {IoCLifecycle} from "../../enum";
 
 export class IoCBuilderFactory{
     public static create(item:IIoCRegistration):IBuilder{
             switch(item.lifecycle){
-                case "Transient": 
+                case IoCLifecycle.Transient: 
                     return new IoCTransientBuilder(item);
-                case "Singleton": 
+                case IoCLifecycle.Singleton: 
                     return new IoCSingletonBuilder(item);
             }
     }

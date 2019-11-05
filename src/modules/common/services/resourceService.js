@@ -20,7 +20,7 @@ System.register(["../models/promiseFactory"], function (exports_1, context_1) {
                     var _this = this;
                     var def = promiseFactory_1.PromiseFactory.create();
                     var connector = window.ioc.resolve("ConnectorService");
-                    var uri = "http://localhost:8080/src/resources/locales/" + name + ".vn.json";
+                    var uri = "http://group02.com/src/resources/locales/" + name + ".vn.json";
                     connector.get(uri).then(function (json) {
                         _this.locales[name] = json;
                         def.resolve();

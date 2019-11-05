@@ -9,7 +9,7 @@ import { Component, Input } from "@angular/core";
             <div class="clearfix"></div>
           </div>
           <div class="x_content">
-                <ng-content></ng-content>
+                <ng-content select = "page-content"></ng-content>
           </div>
         </div>
         `

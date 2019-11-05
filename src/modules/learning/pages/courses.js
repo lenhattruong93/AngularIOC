@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../common/basePage"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../common/basePage", "../../common/enum"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -16,8 +16,11 @@ System.register(["@angular/core", "../../common/basePage"], function (exports_1,
         else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
+    var __metadata = (this && this.__metadata) || function (k, v) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+    };
     var __moduleName = context_1 && context_1.id;
-    var core_1, basePage_1, Courses;
+    var core_1, basePage_1, enum_1, Courses;
     return {
         setters: [
             function (core_1_1) {
@@ -25,18 +28,28 @@ System.register(["@angular/core", "../../common/basePage"], function (exports_1,
             },
             function (basePage_1_1) {
                 basePage_1 = basePage_1_1;
+            },
+            function (enum_1_1) {
+                enum_1 = enum_1_1;
             }
         ],
         execute: function () {
             Courses = /** @class */ (function (_super) {
                 __extends(Courses, _super);
                 function Courses() {
-                    return _super !== null && _super.apply(this, arguments) || this;
+                    var _this = _super.call(this) || this;
+                    var self = _this;
+                    var courseService = window.ioc.resolve(enum_1.IoCNames.CourseService);
+                    courseService.getCourses().then(function (data) {
+                        self.courses = data;
+                    });
+                    return _this;
                 }
                 Courses = __decorate([
                     core_1.Component({
-                        template: "\n    <page [title]=\"i18n.learning.pages.courses.title\">\n        <page-content>\n                <table class=\"table\">\n                <thead>\n                    <tr>\n                        <th>#</th>\n                        <th>{{i18n.learning.pages.courses.firstName}}</th>\n                        <th>{{i18n.learning.pages.courses.lastName}}</th>\n                        <th>{{i18n.learning.pages.courses.userName}}</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr>\n                        <th scope=\"row\">1</th>\n                        <td>Mark</td>\n                        <td>Otto</td>\n                        <td>@mdo</td>\n                    </tr>\n                    <tr>\n                        <th scope=\"row\">2</th>\n                        <td>Jacob</td>\n                        <td>Thornton</td>\n                        <td>@fat</td>\n                    </tr>\n                    <tr>\n                        <th scope=\"row\">3</th>\n                        <td>Larry</td>\n                        <td>the Bird</td>\n                        <td>@twitter</td>\n                    </tr>\n                </tbody>\n            </table>      \n        </page-content>\n    </page>\n    "
-                    })
+                        template: "\n    <page [title]=\"i18n.learning.pages.courses.title_\">\n        <page-content>\n        <table class=\"table\">\n        <thead>\n            <tr>\n                <th>{{i18n.learning.pages.courses.id}}</th>\n                <th>{{i18n.learning.pages.courses.title}}</th>\n                <th>{{i18n.learning.pages.courses.description}}</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr *ngFor='let item of courses'>\n                <td>{{item.id}}</td>\n                <td>{{item.title}}</td>\n                <td>{{item.description}}</td>\n            </tr>\n\n        </tbody>\n    </table>  \n        </page-content> \n    </page>\n    "
+                    }),
+                    __metadata("design:paramtypes", [])
                 ], Courses);
                 return Courses;
             }(basePage_1.BasePage));

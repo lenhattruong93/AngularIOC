@@ -1,3 +1,4 @@
+
 declare interface Window{
     ioc:IIoCContainer;
 }
@@ -10,5 +11,5 @@ declare interface IIoCRegistration{
     name:string;
     instanceOf:any;
     instance?:any;
-    lifecycle:string;
+    lifecycle:any;
 }

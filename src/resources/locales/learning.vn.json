@@ -1,10 +1,10 @@
 {
     "pages":{
         "courses":{
-            "title":"Courses",
-            "firstName":"First Name",
-            "lastName":"Last Name",
-            "userName":"User Name"
+            "title_":"Courses",
+            "id":"Id",
+            "title":"Title",
+            "description":"Description"
         }
     }
 }

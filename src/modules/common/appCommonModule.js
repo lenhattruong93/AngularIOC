@@ -27,7 +27,7 @@ System.register(["@angular/core", "../common/component/pages/page", "./component
                 AppCommonModule = __decorate([
                     core_1.NgModule({
                         declarations: [page_1.Page, pageContent_1.PageContent],
-                        exports: [page_1.Page, pageContent_1.PageContent]
+                        exports: [page_1.Page, pageContent_1.PageContent],
                     })
                 ], AppCommonModule);
                 return AppCommonModule;
