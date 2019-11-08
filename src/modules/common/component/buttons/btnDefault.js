@@ -10,7 +10,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, Page;
+    var core_1, BtnDefault;
     return {
         setters: [
             function (core_1_1) {
@@ -18,23 +18,23 @@ System.register(["@angular/core"], function (exports_1, context_1) {
             }
         ],
         execute: function () {
-            Page = /** @class */ (function () {
-                function Page() {
+            BtnDefault = /** @class */ (function () {
+                function BtnDefault() {
                 }
                 __decorate([
                     core_1.Input(),
-                    __metadata("design:type", Object)
-                ], Page.prototype, "title", void 0);
-                Page = __decorate([
+                    __metadata("design:type", String)
+                ], BtnDefault.prototype, "label", void 0);
+                BtnDefault = __decorate([
                     core_1.Component({
-                        selector: "page",
-                        template: "\n        <div class=\"x_panel\">\n          <div class=\"x_title\">\n            <h2>{{title}}</h2>       \n            \n            <div class=\"clearfix\"></div>\n          </div>\n          <div class=\"x_content\">\n                <ng-content select = \"page-content\"></ng-content>\n          </div>\n          <ng-content seclect =\"page-command\"></ng-content>   \n        </div>\n        "
+                        selector: "btn-default",
+                        template: "\n    <button class=\"btn btn-default\">{{label}}</button>\n    "
                     })
-                ], Page);
-                return Page;
+                ], BtnDefault);
+                return BtnDefault;
             }());
-            exports_1("Page", Page);
+            exports_1("BtnDefault", BtnDefault);
         }
     };
 });
-//# sourceMappingURL=page.js.map
+//# sourceMappingURL=btnDefault.js.map

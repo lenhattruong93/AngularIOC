@@ -1,4 +1,4 @@
-System.register(["@angular/core", "@angular/router", "./pages/courses", "../common/appCommonModule", "@angular/common"], function (exports_1, context_1) {
+System.register(["@angular/core", "@angular/router", "./pages/courses", "../common/appCommonModule", "@angular/common", "./pages/addCourse"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["@angular/core", "@angular/router", "./pages/courses", "../comm
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, router_1, courses_1, appCommonModule_1, common_1, routes, LearningRoutes;
+    var core_1, router_1, courses_1, appCommonModule_1, common_1, addCourse_1, routes, LearningRoutes;
     return {
         setters: [
             function (core_1_1) {
@@ -24,12 +24,16 @@ System.register(["@angular/core", "@angular/router", "./pages/courses", "../comm
             },
             function (common_1_1) {
                 common_1 = common_1_1;
+            },
+            function (addCourse_1_1) {
+                addCourse_1 = addCourse_1_1;
             }
         ],
         execute: function () {
             routes = [
                 { path: "", redirectTo: "courses", pathMatch: "full" },
-                { path: "courses", component: courses_1.Courses }
+                { path: "courses", component: courses_1.Courses },
+                { path: "addcourse", component: addCourse_1.AddCourse }
             ];
             LearningRoutes = /** @class */ (function () {
                 function LearningRoutes() {
@@ -37,7 +41,7 @@ System.register(["@angular/core", "@angular/router", "./pages/courses", "../comm
                 LearningRoutes = __decorate([
                     core_1.NgModule({
                         imports: [common_1.CommonModule, router_1.RouterModule.forChild(routes), appCommonModule_1.AppCommonModule],
-                        declarations: [courses_1.Courses]
+                        declarations: [courses_1.Courses, addCourse_1.AddCourse]
                     })
                 ], LearningRoutes);
                 return LearningRoutes;

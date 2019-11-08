@@ -3,7 +3,6 @@ import { Promise } from "../../../common/models/promise";
 import { PromiseFactory } from "../../../common/models/promiseFactory";
 import { IConnector } from "../../../common/services/iconnector";
 import { IoCNames } from "../../../common/enum";
-
 export class CourseService implements ICourseService{
     public getCourses():Promise {
         let def: Promise = PromiseFactory.create();

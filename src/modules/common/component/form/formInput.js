@@ -10,7 +10,7 @@ System.register(["@angular/core"], function (exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, Page;
+    var core_1, FormInput;
     return {
         setters: [
             function (core_1_1) {
@@ -18,23 +18,23 @@ System.register(["@angular/core"], function (exports_1, context_1) {
             }
         ],
         execute: function () {
-            Page = /** @class */ (function () {
-                function Page() {
+            FormInput = /** @class */ (function () {
+                function FormInput() {
                 }
                 __decorate([
                     core_1.Input(),
-                    __metadata("design:type", Object)
-                ], Page.prototype, "title", void 0);
-                Page = __decorate([
+                    __metadata("design:type", String)
+                ], FormInput.prototype, "label", void 0);
+                FormInput = __decorate([
                     core_1.Component({
-                        selector: "page",
-                        template: "\n        <div class=\"x_panel\">\n          <div class=\"x_title\">\n            <h2>{{title}}</h2>       \n            \n            <div class=\"clearfix\"></div>\n          </div>\n          <div class=\"x_content\">\n                <ng-content select = \"page-content\"></ng-content>\n          </div>\n          <ng-content seclect =\"page-command\"></ng-content>   \n        </div>\n        "
+                        selector: "form-input",
+                        template: "\n    <div class=\"form-group\">\n        <label class=\"control-label col-md-3 col-sm-3 col-xs-12\" for=\"first-name\">{{label}}\n        </label>\n        <div class=\"col-md-6 col-sm-6 col-xs-12\">\n        <input type=\"text\" id=\"first-name\" required=\"required\" class=\"form-control col-md-7 col-xs-12\">\n        </div>\n    </div>\n    "
                     })
-                ], Page);
-                return Page;
+                ], FormInput);
+                return FormInput;
             }());
-            exports_1("Page", Page);
+            exports_1("FormInput", FormInput);
         }
     };
 });
-//# sourceMappingURL=page.js.map
+//# sourceMappingURL=formInput.js.map

@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../common/basePage", "../../common/enum"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../common/basePage", "../../common/enum", "@angular/router"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -20,7 +20,7 @@ System.register(["@angular/core", "../../common/basePage", "../../common/enum"],
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, basePage_1, enum_1, Courses;
+    var core_1, basePage_1, enum_1, router_1, Courses;
     return {
         setters: [
             function (core_1_1) {
@@ -31,13 +31,17 @@ System.register(["@angular/core", "../../common/basePage", "../../common/enum"],
             },
             function (enum_1_1) {
                 enum_1 = enum_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
             }
         ],
         execute: function () {
             Courses = /** @class */ (function (_super) {
                 __extends(Courses, _super);
-                function Courses() {
+                function Courses(router) {
                     var _this = _super.call(this) || this;
+                    _this.router = router;
                     var self = _this;
                     var courseService = window.ioc.resolve(enum_1.IoCNames.CourseService);
                     courseService.getCourses().then(function (data) {
@@ -45,11 +49,14 @@ System.register(["@angular/core", "../../common/basePage", "../../common/enum"],
                     });
                     return _this;
                 }
+                Courses.prototype.onAddNewCourseClicked = function () {
+                    this.router.navigate(['learning/addcourse']);
+                };
                 Courses = __decorate([
                     core_1.Component({
-                        template: "\n    <page [title]=\"i18n.learning.pages.courses.title_\">\n        <page-content>\n        <table class=\"table\">\n        <thead>\n            <tr>\n                <th>{{i18n.learning.pages.courses.id}}</th>\n                <th>{{i18n.learning.pages.courses.title}}</th>\n                <th>{{i18n.learning.pages.courses.description}}</th>\n            </tr>\n        </thead>\n        <tbody>\n            <tr *ngFor='let item of courses'>\n                <td>{{item.id}}</td>\n                <td>{{item.title}}</td>\n                <td>{{item.description}}</td>\n            </tr>\n\n        </tbody>\n    </table>  \n        </page-content> \n    </page>\n    "
+                        template: "\n<page [title]=\"i18n.learning.pages.courses.title_\">\n     <page-command>\n        <i class=\"fa fa-2x fa-plus\" (click)='onAddNewCourseClicked()'></i>\n     </page-command>\n     <page-content>\n            <table class=\"table\">\n                <thead>\n                    <tr>\n                        <th>{{i18n.learning.pages.courses.id}}</th>\n                        <th>{{i18n.learning.pages.courses.title}}</th>\n                        <th>{{i18n.learning.pages.courses.description}}</th>\n                    </tr>\n                </thead>\n                <tbody>\n                    <tr *ngFor='let item of courses'>\n                        <td>{{item.id}}</td>\n                        <td>{{item.title}}</td>\n                        <td>{{item.description}}</td>\n                    </tr>\n                </tbody>\n        </table>  \n    </page-content> \n</page>\n    "
                     }),
-                    __metadata("design:paramtypes", [])
+                    __metadata("design:paramtypes", [router_1.Router])
                 ], Courses);
                 return Courses;
             }(basePage_1.BasePage));

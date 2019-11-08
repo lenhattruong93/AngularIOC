@@ -5,6 +5,15 @@
             "id":"Id",
             "title":"Title",
             "description":"Description"
+        },
+        "addCourse":{
+            "title_":"Add Course Page",
+            "title":"Title",
+            "description":"Description"
         }
+    },
+    "common":{
+        "cancel":"Cancel",
+        "save":"Save"
     }
 }
