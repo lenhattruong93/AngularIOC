@@ -13,6 +13,7 @@ System.register([], function (exports_1, context_1) {
             (function (IoCNames) {
                 IoCNames["CourseService"] = "CourseService";
                 IoCNames["ConnectorService"] = "ConnectorService";
+                IoCNames["EventManagerService"] = "EventManagerService";
             })(IoCNames || (IoCNames = {}));
             exports_1("IoCNames", IoCNames);
         }

@@ -13,4 +13,13 @@ export class CourseService implements ICourseService{
         });
         return def;
     }
+    public addCourse(model:any):Promise{
+        let def:Promise = PromiseFactory.create();
+        let uri:string="http://group02.com/rest/api/courses/addcourse";
+        let iconnector:IConnector = window.ioc.resolve(IoCNames.ConnectorService);
+        iconnector.post(uri,model).then(()=>{
+            def.resolve()
+        });
+        return def;
+    }
 }

@@ -25,6 +25,15 @@ System.register(["../models/promiseFactory", "@angular/http", "rxjs/add/operator
                         .subscribe(function (json) { def.resolve(json); });
                     return def;
                 };
+                ConnectorService.prototype.post = function (uri, model) {
+                    var def = promiseFactory_1.PromiseFactory.create();
+                    var http = window.ioc.resolve(http_1.Http);
+                    http.post(uri, model)
+                        .map(function (respone) { return respone.json(); })
+                        .subscribe(function (json) { def.resolve(json); });
+                    return def;
+                };
+                ;
                 return ConnectorService;
             }());
             exports_1("ConnectorService", ConnectorService);

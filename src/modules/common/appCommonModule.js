@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../common/component/pages/page", "./component/pages/pageContent", "./component/pages/pageCommand", "./component/form/formHorizontal", "./component/form/formInput", "./component/form/formButtons", "./component/buttons/btnDefault", "./component/buttons/btnPrimary"], function (exports_1, context_1) {
+System.register(["@angular/core", "../common/component/pages/page", "./component/pages/pageContent", "./component/pages/pageCommand", "./component/form/formHorizontal", "./component/form/formInput", "./component/form/formButtons", "./component/buttons/btnDefault", "./component/buttons/btnPrimary", "@angular/common", "@angular/forms"], function (exports_1, context_1) {
     "use strict";
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -7,7 +7,7 @@ System.register(["@angular/core", "../common/component/pages/page", "./component
         return c > 3 && r && Object.defineProperty(target, key, r), r;
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, page_1, pageContent_1, pageCommand_1, formHorizontal_1, formInput_1, formButtons_1, btnDefault_1, btnPrimary_1, AppCommonModule;
+    var core_1, page_1, pageContent_1, pageCommand_1, formHorizontal_1, formInput_1, formButtons_1, btnDefault_1, btnPrimary_1, common_1, forms_1, AppCommonModule;
     return {
         setters: [
             function (core_1_1) {
@@ -36,6 +36,12 @@ System.register(["@angular/core", "../common/component/pages/page", "./component
             },
             function (btnPrimary_1_1) {
                 btnPrimary_1 = btnPrimary_1_1;
+            },
+            function (common_1_1) {
+                common_1 = common_1_1;
+            },
+            function (forms_1_1) {
+                forms_1 = forms_1_1;
             }
         ],
         execute: function () {
@@ -44,8 +50,20 @@ System.register(["@angular/core", "../common/component/pages/page", "./component
                 }
                 AppCommonModule = __decorate([
                     core_1.NgModule({
-                        declarations: [page_1.Page, pageContent_1.PageContent, pageCommand_1.PageCommand, formHorizontal_1.FormHorizontal, formInput_1.FormInput, formButtons_1.FormButtons, btnDefault_1.BtnDefault, btnPrimary_1.BtnPrimary],
-                        exports: [page_1.Page, pageContent_1.PageContent, pageCommand_1.PageCommand, formHorizontal_1.FormHorizontal, formInput_1.FormInput, formButtons_1.FormButtons, btnDefault_1.BtnDefault, btnPrimary_1.BtnPrimary],
+                        imports: [
+                            common_1.CommonModule,
+                            forms_1.FormsModule
+                        ],
+                        declarations: [
+                            page_1.Page, pageContent_1.PageContent, pageCommand_1.PageCommand,
+                            formHorizontal_1.FormHorizontal, formInput_1.FormInput, formButtons_1.FormButtons,
+                            btnDefault_1.BtnDefault, btnPrimary_1.BtnPrimary
+                        ],
+                        exports: [
+                            page_1.Page, pageContent_1.PageContent, pageCommand_1.PageCommand,
+                            formHorizontal_1.FormHorizontal, formInput_1.FormInput, formButtons_1.FormButtons,
+                            btnDefault_1.BtnDefault, btnPrimary_1.BtnPrimary
+                        ]
                     })
                 ], AppCommonModule);
                 return AppCommonModule;

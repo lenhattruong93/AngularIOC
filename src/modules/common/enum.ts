@@ -4,5 +4,6 @@ export enum IoCLifecycle {
 }
 export enum IoCNames{
     CourseService="CourseService",
-    ConnectorService="ConnectorService"
+    ConnectorService="ConnectorService",
+    EventManagerService = "EventManagerService"
 }
