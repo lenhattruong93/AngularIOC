@@ -3,6 +3,8 @@ import { PromiseFactory } from "../models/promiseFactory";
 import {Http} from "@angular/http";
 import "rxjs/add/operator/map" ;
 import { IConnector } from "./iconnector";
+import { IoCNames } from "../enum";
+import { IEventManager } from "./ieventManager";
 
 export class ConnectorService implements IConnector{
     public get(uri:string):Promise{
@@ -18,7 +20,14 @@ export class ConnectorService implements IConnector{
         let http:Http=window.ioc.resolve(Http);
         http.post(uri,model)
         .map((respone:any)=>{return respone.json();})
-        .subscribe((json:any)=>{def.resolve(json);});
+        .subscribe((json:any)=>{
+            if(json && json.errorKey){
+                let eventManager:IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
+                eventManager.publish(json.errorKey);
+                return;
+            }
+            def.resolve(json);
+        });
         return def;
     };
 }

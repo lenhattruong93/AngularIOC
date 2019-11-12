@@ -11,8 +11,8 @@ template:`
 <page [title]="i18n.learning.pages.addCourse.title_">
     <page-content>
         <form-horizontal>
-            <form-input 
-                [validation]="['learning.pages.addCourse.title']"
+            <form-input
+                [validation]="['learning.pages.addCourse.titleWasRequired']"
                 [label]="i18n.learning.pages.addCourse.title"
                 (onValueChange)="onTitleChanged($event)"
             ></form-input>
@@ -45,10 +45,10 @@ export class AddCourse extends BasePage{
     public onSaveClicked():void{
         let self=this;
         let eventManager: IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
-        if(!self.model.title){
-            eventManager.publish("learning.pages.addCourse.title");
-            return;
-        }
+        // if(!self.model.title){
+        //     eventManager.publish("learning.page.addCourse.titleWasRequired");
+        //     return;
+        // }
         let courseservice:ICourseService = window.ioc.resolve(IoCNames.CourseService);
         courseservice.addCourse(this.model).then(()=>{
             self.router.navigate(["learning/courses"]);

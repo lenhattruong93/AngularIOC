@@ -54,10 +54,10 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                 AddCourse.prototype.onSaveClicked = function () {
                     var self = this;
                     var eventManager = window.ioc.resolve(enum_1.IoCNames.EventManagerService);
-                    if (!self.model.title) {
-                        eventManager.publish("learning.pages.addCourse.title");
-                        return;
-                    }
+                    // if(!self.model.title){
+                    //     eventManager.publish("learning.page.addCourse.titleWasRequired");
+                    //     return;
+                    // }
                     var courseservice = window.ioc.resolve(enum_1.IoCNames.CourseService);
                     courseservice.addCourse(this.model).then(function () {
                         self.router.navigate(["learning/courses"]);
@@ -65,7 +65,7 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                 };
                 AddCourse = __decorate([
                     core_1.Component({
-                        template: "\n<page [title]=\"i18n.learning.pages.addCourse.title_\">\n    <page-content>\n        <form-horizontal>\n            <form-input \n                [validation]=\"['learning.pages.addCourse.title']\"\n                [label]=\"i18n.learning.pages.addCourse.title\"\n                (onValueChange)=\"onTitleChanged($event)\"\n            ></form-input>\n            <form-input [label]=\"i18n.learning.pages.addCourse.description\"\n                (onValueChange)=\"onDescChanged($event)\"\n            ></form-input>\n            <form-buttons>\n                <btn-default [label]=\"i18n.learning.common.cancel\"></btn-default>\n                <btn-primary (click)=\"onSaveClicked()\" [label]=\"i18n.learning.common.save\"></btn-primary>\n            </form-buttons>\n        </form-horizontal>\n    </page-content>\n</page>\n        \n"
+                        template: "\n<page [title]=\"i18n.learning.pages.addCourse.title_\">\n    <page-content>\n        <form-horizontal>\n            <form-input\n                [validation]=\"['learning.pages.addCourse.titleWasRequired']\"\n                [label]=\"i18n.learning.pages.addCourse.title\"\n                (onValueChange)=\"onTitleChanged($event)\"\n            ></form-input>\n            <form-input [label]=\"i18n.learning.pages.addCourse.description\"\n                (onValueChange)=\"onDescChanged($event)\"\n            ></form-input>\n            <form-buttons>\n                <btn-default [label]=\"i18n.learning.common.cancel\"></btn-default>\n                <btn-primary (click)=\"onSaveClicked()\" [label]=\"i18n.learning.common.save\"></btn-primary>\n            </form-buttons>\n        </form-horizontal>\n    </page-content>\n</page>\n        \n"
                     }),
                     __metadata("design:paramtypes", [router_1.Router])
                 ], AddCourse);

@@ -9,7 +9,8 @@
         "addCourse":{
             "title_":"Add Course Page",
             "title":"Title",
-            "description":"Description"
+            "description":"Description",
+            "titleWasRequired":"title Was Required"
         }
     },
     "common":{
