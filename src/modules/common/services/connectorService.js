@@ -29,9 +29,11 @@ System.register(["../models/promiseFactory", "@angular/http", "rxjs/add/operator
                     return def;
                 };
                 ConnectorService.prototype.post = function (uri, model) {
+                    var headers = new http_1.Headers();
+                    headers.append("content-type", "application/json");
                     var def = promiseFactory_1.PromiseFactory.create();
                     var http = window.ioc.resolve(http_1.Http);
-                    http.post(uri, model)
+                    http.post(uri, JSON.stringify(model), { headers: headers }) // Goi ham toJson se duoc goi neu co
                         .map(function (respone) { return respone.json(); })
                         .subscribe(function (json) {
                         if (json && json.errorKey) {

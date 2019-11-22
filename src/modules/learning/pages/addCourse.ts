@@ -5,7 +5,8 @@ import { IoCNames } from "../../common/enum";
 import { Router } from "@angular/router";
 import { EventManager } from "@angular/platform-browser";
 import { IEventManager } from "../../common/services/ieventManager";
-
+import {required} from "../../common/decorators/required";
+import {BaseModel} from "../../common/models/baseModel";
 @Component({
 template:`
 <page [title]="i18n.learning.pages.addCourse.title_">
@@ -30,7 +31,7 @@ template:`
 `
 })
 export class AddCourse extends BasePage{
-    public model:any={};
+    public model:AddCourseModel= new AddCourseModel();
     public router:Router;
     constructor(router :Router ){
         super();
@@ -45,6 +46,7 @@ export class AddCourse extends BasePage{
     public onSaveClicked():void{
         let self=this;
         let eventManager: IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
+        if(!this.model.isValid()){return;}
         // if(!self.model.title){
         //     eventManager.publish("learning.page.addCourse.titleWasRequired");
         //     return;
@@ -57,3 +59,31 @@ export class AddCourse extends BasePage{
     }
 
 }
+class AddCourseModel extends BaseModel{
+    @required()
+    public title:string;
+   // @required()
+    // public title1:string;
+    // @required()
+    // public title2:string;
+
+    // @required()
+    // public title3:string;
+
+   public  description:string="fdfas342234dfasf";
+//    public  description2:string="fdfasd242fasf";
+//    public  description3:string="fdfasd243243432fasf";
+//    public  description5:string="fdfas324342dfasf";
+    //private  __validation:Array<any>=[];
+    public isValid():boolean{
+        if(Object.keys(this["__validation"]||{}).length==0){return true;} // A && B && C hoac A || B || C
+        return false;
+    }
+   
+}
+// let model = new AddCourseModel();
+// console.log(model.isValid())
+// model.title="";
+// console.log(model.isValid());
+// model.title="adfabfag";
+// console.log(model.isValid());

@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../common/basepage", "../../common/enum", "@angular/router"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../common/basepage", "../../common/enum", "@angular/router", "../../common/decorators/required", "../../common/models/baseModel"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -20,7 +20,7 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, basepage_1, enum_1, router_1, AddCourse;
+    var core_1, basepage_1, enum_1, router_1, required_1, baseModel_1, AddCourse, AddCourseModel;
     return {
         setters: [
             function (core_1_1) {
@@ -34,6 +34,12 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
             },
             function (router_1_1) {
                 router_1 = router_1_1;
+            },
+            function (required_1_1) {
+                required_1 = required_1_1;
+            },
+            function (baseModel_1_1) {
+                baseModel_1 = baseModel_1_1;
             }
         ],
         execute: function () {
@@ -41,7 +47,7 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                 __extends(AddCourse, _super);
                 function AddCourse(router) {
                     var _this = _super.call(this) || this;
-                    _this.model = {};
+                    _this.model = new AddCourseModel();
                     _this.router = router;
                     return _this;
                 }
@@ -54,6 +60,9 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                 AddCourse.prototype.onSaveClicked = function () {
                     var self = this;
                     var eventManager = window.ioc.resolve(enum_1.IoCNames.EventManagerService);
+                    if (!this.model.isValid()) {
+                        return;
+                    }
                     // if(!self.model.title){
                     //     eventManager.publish("learning.page.addCourse.titleWasRequired");
                     //     return;
@@ -72,6 +81,41 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                 return AddCourse;
             }(basepage_1.BasePage));
             exports_1("AddCourse", AddCourse);
+            AddCourseModel = /** @class */ (function (_super) {
+                __extends(AddCourseModel, _super);
+                function AddCourseModel() {
+                    var _this = _super !== null && _super.apply(this, arguments) || this;
+                    // @required()
+                    // public title1:string;
+                    // @required()
+                    // public title2:string;
+                    // @required()
+                    // public title3:string;
+                    _this.description = "fdfas342234dfasf";
+                    return _this;
+                }
+                //    public  description2:string="fdfasd242fasf";
+                //    public  description3:string="fdfasd243243432fasf";
+                //    public  description5:string="fdfas324342dfasf";
+                //private  __validation:Array<any>=[];
+                AddCourseModel.prototype.isValid = function () {
+                    if (Object.keys(this["__validation"] || {}).length == 0) {
+                        return true;
+                    } // A && B && C hoac A || B || C
+                    return false;
+                };
+                __decorate([
+                    required_1.required(),
+                    __metadata("design:type", String)
+                ], AddCourseModel.prototype, "title", void 0);
+                return AddCourseModel;
+            }(baseModel_1.BaseModel));
+            // let model = new AddCourseModel();
+            // console.log(model.isValid())
+            // model.title="";
+            // console.log(model.isValid());
+            // model.title="adfabfag";
+            // console.log(model.isValid());
         }
     };
 });
