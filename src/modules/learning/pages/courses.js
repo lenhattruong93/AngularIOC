@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../common/basePage", "../../common/enum", "@angular/router"], function (exports_1, context_1) {
+System.register(["@angular/core", "@app/common", "@angular/router"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -20,17 +20,15 @@ System.register(["@angular/core", "../../common/basePage", "../../common/enum", 
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, basePage_1, enum_1, router_1, Courses;
+    var core_1, common_1, common_2, router_1, Courses;
     return {
         setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (basePage_1_1) {
-                basePage_1 = basePage_1_1;
-            },
-            function (enum_1_1) {
-                enum_1 = enum_1_1;
+            function (common_1_1) {
+                common_1 = common_1_1;
+                common_2 = common_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
@@ -43,7 +41,7 @@ System.register(["@angular/core", "../../common/basePage", "../../common/enum", 
                     var _this = _super.call(this) || this;
                     _this.router = router;
                     var self = _this;
-                    var courseService = window.ioc.resolve(enum_1.IoCNames.CourseService);
+                    var courseService = window.ioc.resolve(common_2.IoCNames.CourseService);
                     courseService.getCourses().then(function (data) {
                         self.courses = data;
                     });
@@ -59,7 +57,7 @@ System.register(["@angular/core", "../../common/basePage", "../../common/enum", 
                     __metadata("design:paramtypes", [router_1.Router])
                 ], Courses);
                 return Courses;
-            }(basePage_1.BasePage));
+            }(common_1.BasePage));
             exports_1("Courses", Courses);
         }
     };

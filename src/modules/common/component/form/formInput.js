@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../enum", "../../basepage"], function (exports_1, context_1) {
+System.register(["@angular/core", "../../enum", "@app/common"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -20,7 +20,7 @@ System.register(["@angular/core", "../../enum", "../../basepage"], function (exp
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, enum_1, basepage_1, FormInput;
+    var core_1, enum_1, common_1, FormInput;
     return {
         setters: [
             function (core_1_1) {
@@ -29,8 +29,8 @@ System.register(["@angular/core", "../../enum", "../../basepage"], function (exp
             function (enum_1_1) {
                 enum_1 = enum_1_1;
             },
-            function (basepage_1_1) {
-                basepage_1 = basepage_1_1;
+            function (common_1_1) {
+                common_1 = common_1_1;
             }
         ],
         execute: function () {
@@ -87,7 +87,7 @@ System.register(["@angular/core", "../../enum", "../../basepage"], function (exp
                     __metadata("design:paramtypes", [core_1.ElementRef])
                 ], FormInput);
                 return FormInput;
-            }(basepage_1.BasePage));
+            }(common_1.BasePage));
             exports_1("FormInput", FormInput);
         }
     };

@@ -1,12 +1,11 @@
 import { Component } from "@angular/core";
-import { BasePage } from "../../common/basepage";
+import { BasePage } from "@app/common";
 import { ICourseService } from "../_share/services/icourseService";
-import { IoCNames } from "../../common/enum";
+import { IoCNames } from "@app/common";
 import { Router } from "@angular/router";
-import { EventManager } from "@angular/platform-browser";
-import { IEventManager } from "../../common/services/ieventManager";
-import {required} from "../../common/decorators/required";
-import {BaseModel} from "../../common/models/baseModel";
+import { IEventManager } from "@app/common";
+import {required} from "@app/common";
+import {BaseModel} from "@app/common";
 @Component({
 template:`
 <page [title]="i18n.learning.pages.addCourse.title_">

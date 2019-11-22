@@ -1,4 +1,4 @@
-import {IResourceService} from "./services/iresourceService";
+import {IResourceService} from "../services/iresourceService";
 export class BasePage{
     public i18n:any;
     constructor(){

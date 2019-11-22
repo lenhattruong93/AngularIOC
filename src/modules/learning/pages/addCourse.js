@@ -1,4 +1,4 @@
-System.register(["@angular/core", "../../common/basepage", "../../common/enum", "@angular/router", "../../common/decorators/required", "../../common/models/baseModel"], function (exports_1, context_1) {
+System.register(["@angular/core", "@app/common", "@angular/router"], function (exports_1, context_1) {
     "use strict";
     var __extends = (this && this.__extends) || (function () {
         var extendStatics = Object.setPrototypeOf ||
@@ -20,26 +20,20 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var __moduleName = context_1 && context_1.id;
-    var core_1, basepage_1, enum_1, router_1, required_1, baseModel_1, AddCourse, AddCourseModel;
+    var core_1, common_1, common_2, router_1, common_3, common_4, AddCourse, AddCourseModel;
     return {
         setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (basepage_1_1) {
-                basepage_1 = basepage_1_1;
-            },
-            function (enum_1_1) {
-                enum_1 = enum_1_1;
+            function (common_1_1) {
+                common_1 = common_1_1;
+                common_2 = common_1_1;
+                common_3 = common_1_1;
+                common_4 = common_1_1;
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-            },
-            function (required_1_1) {
-                required_1 = required_1_1;
-            },
-            function (baseModel_1_1) {
-                baseModel_1 = baseModel_1_1;
             }
         ],
         execute: function () {
@@ -59,7 +53,7 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                 };
                 AddCourse.prototype.onSaveClicked = function () {
                     var self = this;
-                    var eventManager = window.ioc.resolve(enum_1.IoCNames.EventManagerService);
+                    var eventManager = window.ioc.resolve(common_2.IoCNames.EventManagerService);
                     if (!this.model.isValid()) {
                         return;
                     }
@@ -67,7 +61,7 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                     //     eventManager.publish("learning.page.addCourse.titleWasRequired");
                     //     return;
                     // }
-                    var courseservice = window.ioc.resolve(enum_1.IoCNames.CourseService);
+                    var courseservice = window.ioc.resolve(common_2.IoCNames.CourseService);
                     courseservice.addCourse(this.model).then(function () {
                         self.router.navigate(["learning/courses"]);
                     });
@@ -79,7 +73,7 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                     __metadata("design:paramtypes", [router_1.Router])
                 ], AddCourse);
                 return AddCourse;
-            }(basepage_1.BasePage));
+            }(common_1.BasePage));
             exports_1("AddCourse", AddCourse);
             AddCourseModel = /** @class */ (function (_super) {
                 __extends(AddCourseModel, _super);
@@ -105,11 +99,11 @@ System.register(["@angular/core", "../../common/basepage", "../../common/enum", 
                     return false;
                 };
                 __decorate([
-                    required_1.required(),
+                    common_3.required(),
                     __metadata("design:type", String)
                 ], AddCourseModel.prototype, "title", void 0);
                 return AddCourseModel;
-            }(baseModel_1.BaseModel));
+            }(common_4.BaseModel));
             // let model = new AddCourseModel();
             // console.log(model.isValid())
             // model.title="";

@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, AfterContentInit, ElementRef } from "@angular/core";
 import { IoCNames } from "../../enum";
 import { IEventManager } from "../../services/ieventManager";
-import { BasePage } from "../../basepage";
+import { BasePage } from "@app/common";
 
 @Component({
     selector:"form-input",

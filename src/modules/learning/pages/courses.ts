@@ -1,7 +1,7 @@
 import { Component } from "@angular/core";
-import {BasePage} from "../../common/basePage";
+import {BasePage} from "@app/common";
 import {ICourseService} from "../../learning/_share/services/icourseService";
-import {IoCNames} from "../../common/enum";
+import {IoCNames} from "@app/common";
 import { Router } from "@angular/router";
 @Component({
     template:`

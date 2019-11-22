@@ -5,7 +5,7 @@ import { AppRoutes } from "./appRoutes";
 import { Layout } from "./layout";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
-import { IResourceService } from "./modules/common/services/iresourceService";
+import { IResourceService } from "@app/common";
 import { HttpModule } from "@angular/http";
 @NgModule({
     imports: [

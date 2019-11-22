@@ -1,8 +1,8 @@
 import { ICourseService } from "./icourseService";
-import { Promise } from "../../../common/models/promise";
-import { PromiseFactory } from "../../../common/models/promiseFactory";
-import { IConnector } from "../../../common/services/iconnector";
-import { IoCNames } from "../../../common/enum";
+import { Promise } from "@app/common";
+import { PromiseFactory } from "@app/common";
+import { IConnector } from "@app/common";
+import { IoCNames } from "@app/common";
 export class CourseService implements ICourseService{
     public getCourses():Promise {
         let def: Promise = PromiseFactory.create();
