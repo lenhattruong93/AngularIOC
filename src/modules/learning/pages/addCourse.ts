@@ -1,11 +1,13 @@
 import { Component } from "@angular/core";
-import { BasePage } from "@app/common";
+import { BasePage } from "@app/common"; // fix
 import { ICourseService } from "../_share/services/icourseService";
 import { IoCNames } from "@app/common";
 import { Router } from "@angular/router";
 import { IEventManager } from "@app/common";
 import {required} from "@app/common";
 import {BaseModel} from "@app/common";
+//import { IoCTransientBuilder } from "@app/common";
+//import {BtnDefault} from "@app/common";
 @Component({
 template:`
 <page [title]="i18n.learning.pages.addCourse.title_">

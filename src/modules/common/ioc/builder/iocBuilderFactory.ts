@@ -1,4 +1,5 @@
 import { IoCTransientBuilder } from "./iocTransientBuilder";
+//import { IoCTransientBuilder } from "@app/common";
 import { IoCSingletonBuilder } from "./iocSingletonBuilder";
 import { IBuilder } from "./ibuilder";
 import {IoCLifecycle} from "../../enum";

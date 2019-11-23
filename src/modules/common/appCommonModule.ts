@@ -6,6 +6,7 @@ import {FormHorizontal} from "./component/form/formHorizontal";
 import {FormInput} from "./component/form/formInput";
 import {FormButtons} from "./component/form/formButtons";
 import {BtnDefault} from "./component/buttons/btnDefault";
+//import {BtnDefault} from "@app/common"; // private components
 import {BtnPrimary} from "./component/buttons/btnPrimary";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
