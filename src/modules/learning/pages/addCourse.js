@@ -96,10 +96,14 @@ System.register(["@angular/core", "@app/common", "@angular/router"], function (e
                     if (Object.keys(this["__validation"] || {}).length == 0) {
                         return true;
                     } // A && B && C hoac A || B || C
-                    return false;
+                    var ieventManager = window.ioc.resolve(common_2.IoCNames.EventManagerService);
+                    var __valArray = this["__validation"];
+                    for (var item in __valArray) {
+                        ieventManager.publish(__valArray[item]);
+                    }
                 };
                 __decorate([
-                    common_3.required(),
+                    common_3.required("learning.pages.addCourse.titleWasRequired"),
                     __metadata("design:type", String)
                 ], AddCourseModel.prototype, "title", void 0);
                 return AddCourseModel;

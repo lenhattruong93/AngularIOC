@@ -1,11 +1,11 @@
-export function required(){
+export function required(keyvalidations:string){
   // return function(){} //anonymous  func
   return (target:object,propertyName:string)=>{
       let __val:any;
       target["__validation"]=target["__validation"]||{};
-      target["__validation"][propertyName]=propertyName;
+      target["__validation"][propertyName]=keyvalidations;
       target["__maps"] = target["__maps"]||{};
-      target["__maps"][propertyName] = propertyName;
+      target["__maps"][propertyName] = propertyName; // Validattions vao day
     Object.defineProperty(target,propertyName,{
         get:getFunc,
 
@@ -22,7 +22,7 @@ export function required(){
             //   target["__validation"]=[];  
             // }
             
-            target["__validation"][propertyName]=propertyName;
+            target["__validation"][propertyName]=keyvalidations;
             
            
         } else {

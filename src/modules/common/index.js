@@ -1,4 +1,4 @@
-System.register(["./models/basePage", "./enum", "./decorators/required", "./models/baseModel", "./models/promise", "./models/promiseFactory", "./ioc/iocContainerFactory", "./component/buttons/btnDefault"], function (exports_1, context_1) {
+System.register(["./models/basePage", "./enum", "./decorators/required", "./models/baseModel", "./models/promise", "./models/promiseFactory", "./ioc/iocContainerFactory"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -30,12 +30,11 @@ System.register(["./models/basePage", "./enum", "./decorators/required", "./mode
             },
             function (iocContainerFactory_1_1) {
                 exportStar_1(iocContainerFactory_1_1);
-            },
-            function (btnDefault_1_1) {
-                exportStar_1(btnDefault_1_1);
             }
         ],
         execute: function () {
+            //export * from "./component/buttons/btnDefault";
+            //export * from "./ioc/builder/iocTransientBuilder";
         }
     };
 });

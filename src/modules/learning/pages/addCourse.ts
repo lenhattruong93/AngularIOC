@@ -61,7 +61,7 @@ export class AddCourse extends BasePage{
 
 }
 class AddCourseModel extends BaseModel{
-    @required()
+    @required("learning.pages.addCourse.titleWasRequired")
     public title:string;
    // @required()
     // public title1:string;
@@ -78,7 +78,11 @@ class AddCourseModel extends BaseModel{
     //private  __validation:Array<any>=[];
     public isValid():boolean{
         if(Object.keys(this["__validation"]||{}).length==0){return true;} // A && B && C hoac A || B || C
-        return false;
+        let ieventManager :IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
+        let __valArray = this["__validation"];
+        for(let item in __valArray){
+            ieventManager.publish( __valArray[item]);    
+        }
     }
    
 }
