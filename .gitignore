@@ -1,1 +1,10 @@
 node_modules
+.vscode
+# src/apps/**/*.js
+# src/apps/**/*.js.map
+# src/modules/**/*.js
+# src/modules/**/*.js.map
+src/**/*.js
+src/**/*.js.map
+!src/resources/**/*.js
+
