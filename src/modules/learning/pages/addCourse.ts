@@ -16,10 +16,11 @@ template:`
             <form-input
                 [validation]="['learning.pages.addCourse.titleWasRequired']"
                 [label]="i18n.learning.pages.addCourse.title"
-                (onValueChange)="onTitleChanged($event)"
+                [(model)]="model.title"
             ></form-input>
             <form-input [label]="i18n.learning.pages.addCourse.description"
-                (onValueChange)="onDescChanged($event)"
+                [(model)]="model.description"
+            
             ></form-input>
             <form-buttons>
                 <btn-default [label]="i18n.learning.common.cancel"></btn-default>
@@ -32,11 +33,12 @@ template:`
 `
 })
 export class AddCourse extends BasePage{
-    public model:AddCourseModel= new AddCourseModel();
+    public model:AddCourseModel;
     public router:Router;
     constructor(router :Router ){
         super();
         this.router= router;
+        this.model= new AddCourseModel();
     }
     public onTitleChanged(newVl:string):void{  
             this.model.title=newVl;
@@ -48,47 +50,20 @@ export class AddCourse extends BasePage{
         let self=this;
         let eventManager: IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
         if(!this.model.isValid()){return;}
-        // if(!self.model.title){
-        //     eventManager.publish("learning.page.addCourse.titleWasRequired");
-        //     return;
-        // }
         let courseservice:ICourseService = window.ioc.resolve(IoCNames.CourseService);
         courseservice.addCourse(this.model).then(()=>{
             self.router.navigate(["learning/courses"]);
         });
-
     }
-
 }
 class AddCourseModel extends BaseModel{
     @required("learning.pages.addCourse.titleWasRequired")
     public title:string;
-   // @required()
-    // public title1:string;
-    // @required()
-    // public title2:string;
-
-    // @required()
-    // public title3:string;
-
-   public  description:string="fdfas342234dfasf";
-//    public  description2:string="fdfasd242fasf";
-//    public  description3:string="fdfasd243243432fasf";
-//    public  description5:string="fdfas324342dfasf";
-    //private  __validation:Array<any>=[];
-    public isValid():boolean{
-        if(Object.keys(this["__validation"]||{}).length==0){return true;} // A && B && C hoac A || B || C
-        let ieventManager :IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
-        let __valArray = this["__validation"];
-        for(let item in __valArray){
-            ieventManager.publish( __valArray[item]);    
-        }
+    public  description:string="";   
+    constructor(){
+        super();
+        this.title="";
+        this.description="";;
     }
-   
 }
-// let model = new AddCourseModel();
-// console.log(model.isValid())
-// model.title="";
-// console.log(model.isValid());
-// model.title="adfabfag";
-// console.log(model.isValid());
+ 

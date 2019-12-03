@@ -10,7 +10,7 @@ import { BasePage } from "@app/common";
         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">{{label}}
         </label>
         <div class="col-md-6 col-sm-6 col-xs-12">
-            <input class="{{css}}" [(ngModel)]="value" (change)="onValueChanged()" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+            <input class="{{css}}" [(ngModel)]="model" (change)="onModelChanged()" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
             <span>{{errorMessage}}</span>
         </div>
     </div>
@@ -23,14 +23,19 @@ export class FormInput extends BasePage implements AfterContentInit{
     private ui: ElementRef;
     @Input() validation: Array<string>;
     @Input() label:string;
-    @Output() onValueChange:EventEmitter<any> = new EventEmitter();
+    @Input() model:string;
+    @Output() modelChange: EventEmitter<any> = new EventEmitter();
+    // @Output() onValueChange:EventEmitter<any> = new EventEmitter();
     public errorMessage:string;
     constructor(ui:ElementRef){
         super();
         this.ui=ui;
     }
-    public onValueChanged():void{
-        this.onValueChange.emit(this.value);
+    // public onValueChanged():void{
+    //     this.onValueChange.emit(this.value);
+    // }
+    public onModelChanged():void{
+        this.modelChange.emit(this.model);
     }
     ngAfterContentInit():void{
         let self=this;

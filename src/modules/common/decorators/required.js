@@ -4,7 +4,8 @@ System.register([], function (exports_1, context_1) {
     function required(keyvalidations) {
         // return function(){} //anonymous  func
         return function (target, propertyName) {
-            var __val;
+            // let __val:any;
+            var __propertyName = "__" + propertyName; // fix
             target["__validation"] = target["__validation"] || {};
             target["__validation"][propertyName] = keyvalidations;
             target["__maps"] = target["__maps"] || {};
@@ -14,10 +15,11 @@ System.register([], function (exports_1, context_1) {
                 set: setFunc
             });
             function getFunc() {
-                return __val;
+                return target[__propertyName];
+                // return __val; bug bi dinh gia tri
             }
             function setFunc(val) {
-                __val = val;
+                target[__propertyName] = val;
                 // target["__validation"]=target["__validation"]||[]; Truong hop truoc
                 if (!val) {
                     // if(!target["__validation"]){

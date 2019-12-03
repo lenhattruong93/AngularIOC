@@ -36,9 +36,11 @@ System.register(["../models/promiseFactory", "@angular/http", "rxjs/add/operator
                     http.post(uri, JSON.stringify(model), { headers: headers }) // Goi ham toJson se duoc goi neu co
                         .map(function (respone) { return respone.json(); })
                         .subscribe(function (json) {
-                        if (json && json.errorKey) {
-                            var eventManager = window.ioc.resolve(enum_1.IoCNames.EventManagerService);
-                            eventManager.publish(json.errorKey);
+                        if (json && json.errorKeys && json.errorKeys.length > 0) {
+                            var eventManager_1 = window.ioc.resolve(enum_1.IoCNames.EventManagerService);
+                            json.errorKeys.forEach(function (errorKey) {
+                                eventManager_1.publish(errorKey);
+                            });
                             return;
                         }
                         def.resolve(json);

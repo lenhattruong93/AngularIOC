@@ -1,3 +1,5 @@
+import {IoCNames} from "@app/common";
+import {IEventManager} from "@app/common";
 export class BaseModel{
     public toJSON():any {
 
@@ -17,4 +19,12 @@ export class BaseModel{
          // obj["title3"]=this.title3;
          return obj;
      }
+     public isValid():boolean{
+        if(Object.keys(this["__validation"]||{}).length==0){return true;} // A && B && C hoac A || B || C
+        let ieventManager :IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
+        let __valArray = this["__validation"];
+        for(let item in __valArray){
+            ieventManager.publish( __valArray[item]);    
+        }
+    }
 }

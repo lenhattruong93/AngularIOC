@@ -38,12 +38,15 @@ System.register(["@angular/core", "../../enum", "@app/common"], function (export
                 __extends(FormInput, _super);
                 function FormInput(ui) {
                     var _this = _super.call(this) || this;
-                    _this.onValueChange = new core_1.EventEmitter();
+                    _this.modelChange = new core_1.EventEmitter();
                     _this.ui = ui;
                     return _this;
                 }
-                FormInput.prototype.onValueChanged = function () {
-                    this.onValueChange.emit(this.value);
+                // public onValueChanged():void{
+                //     this.onValueChange.emit(this.value);
+                // }
+                FormInput.prototype.onModelChanged = function () {
+                    this.modelChange.emit(this.model);
                 };
                 FormInput.prototype.ngAfterContentInit = function () {
                     var self = this;
@@ -76,13 +79,17 @@ System.register(["@angular/core", "../../enum", "@app/common"], function (export
                     __metadata("design:type", String)
                 ], FormInput.prototype, "label", void 0);
                 __decorate([
+                    core_1.Input(),
+                    __metadata("design:type", String)
+                ], FormInput.prototype, "model", void 0);
+                __decorate([
                     core_1.Output(),
                     __metadata("design:type", core_1.EventEmitter)
-                ], FormInput.prototype, "onValueChange", void 0);
+                ], FormInput.prototype, "modelChange", void 0);
                 FormInput = __decorate([
                     core_1.Component({
                         selector: "form-input",
-                        template: "\n    <div class=\"form-group\">\n        <label class=\"control-label col-md-3 col-sm-3 col-xs-12\" for=\"first-name\">{{label}}\n        </label>\n        <div class=\"col-md-6 col-sm-6 col-xs-12\">\n            <input class=\"{{css}}\" [(ngModel)]=\"value\" (change)=\"onValueChanged()\" type=\"text\" id=\"first-name\" required=\"required\" class=\"form-control col-md-7 col-xs-12\">\n            <span>{{errorMessage}}</span>\n        </div>\n    </div>\n    "
+                        template: "\n    <div class=\"form-group\">\n        <label class=\"control-label col-md-3 col-sm-3 col-xs-12\" for=\"first-name\">{{label}}\n        </label>\n        <div class=\"col-md-6 col-sm-6 col-xs-12\">\n            <input class=\"{{css}}\" [(ngModel)]=\"model\" (change)=\"onModelChanged()\" type=\"text\" id=\"first-name\" required=\"required\" class=\"form-control col-md-7 col-xs-12\">\n            <span>{{errorMessage}}</span>\n        </div>\n    </div>\n    "
                     }),
                     __metadata("design:paramtypes", [core_1.ElementRef])
                 ], FormInput);

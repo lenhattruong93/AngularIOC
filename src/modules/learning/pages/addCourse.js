@@ -41,8 +41,8 @@ System.register(["@angular/core", "@app/common", "@angular/router"], function (e
                 __extends(AddCourse, _super);
                 function AddCourse(router) {
                     var _this = _super.call(this) || this;
-                    _this.model = new AddCourseModel();
                     _this.router = router;
+                    _this.model = new AddCourseModel();
                     return _this;
                 }
                 AddCourse.prototype.onTitleChanged = function (newVl) {
@@ -57,10 +57,6 @@ System.register(["@angular/core", "@app/common", "@angular/router"], function (e
                     if (!this.model.isValid()) {
                         return;
                     }
-                    // if(!self.model.title){
-                    //     eventManager.publish("learning.page.addCourse.titleWasRequired");
-                    //     return;
-                    // }
                     var courseservice = window.ioc.resolve(common_2.IoCNames.CourseService);
                     courseservice.addCourse(this.model).then(function () {
                         self.router.navigate(["learning/courses"]);
@@ -68,7 +64,7 @@ System.register(["@angular/core", "@app/common", "@angular/router"], function (e
                 };
                 AddCourse = __decorate([
                     core_1.Component({
-                        template: "\n<page [title]=\"i18n.learning.pages.addCourse.title_\">\n    <page-content>\n        <form-horizontal>\n            <form-input\n                [validation]=\"['learning.pages.addCourse.titleWasRequired']\"\n                [label]=\"i18n.learning.pages.addCourse.title\"\n                (onValueChange)=\"onTitleChanged($event)\"\n            ></form-input>\n            <form-input [label]=\"i18n.learning.pages.addCourse.description\"\n                (onValueChange)=\"onDescChanged($event)\"\n            ></form-input>\n            <form-buttons>\n                <btn-default [label]=\"i18n.learning.common.cancel\"></btn-default>\n                <btn-primary (click)=\"onSaveClicked()\" [label]=\"i18n.learning.common.save\"></btn-primary>\n            </form-buttons>\n        </form-horizontal>\n    </page-content>\n</page>\n        \n"
+                        template: "\n<page [title]=\"i18n.learning.pages.addCourse.title_\">\n    <page-content>\n        <form-horizontal>\n            <form-input\n                [validation]=\"['learning.pages.addCourse.titleWasRequired']\"\n                [label]=\"i18n.learning.pages.addCourse.title\"\n                [(model)]=\"model.title\"\n            ></form-input>\n            <form-input [label]=\"i18n.learning.pages.addCourse.description\"\n                [(model)]=\"model.description\"\n            \n            ></form-input>\n            <form-buttons>\n                <btn-default [label]=\"i18n.learning.common.cancel\"></btn-default>\n                <btn-primary (click)=\"onSaveClicked()\" [label]=\"i18n.learning.common.save\"></btn-primary>\n            </form-buttons>\n        </form-horizontal>\n    </page-content>\n</page>\n        \n"
                     }),
                     __metadata("design:paramtypes", [router_1.Router])
                 ], AddCourse);
@@ -78,42 +74,19 @@ System.register(["@angular/core", "@app/common", "@angular/router"], function (e
             AddCourseModel = /** @class */ (function (_super) {
                 __extends(AddCourseModel, _super);
                 function AddCourseModel() {
-                    var _this = _super !== null && _super.apply(this, arguments) || this;
-                    // @required()
-                    // public title1:string;
-                    // @required()
-                    // public title2:string;
-                    // @required()
-                    // public title3:string;
-                    _this.description = "fdfas342234dfasf";
+                    var _this = _super.call(this) || this;
+                    _this.description = "";
+                    _this.title = "";
+                    _this.description = "";
+                    ;
                     return _this;
                 }
-                //    public  description2:string="fdfasd242fasf";
-                //    public  description3:string="fdfasd243243432fasf";
-                //    public  description5:string="fdfas324342dfasf";
-                //private  __validation:Array<any>=[];
-                AddCourseModel.prototype.isValid = function () {
-                    if (Object.keys(this["__validation"] || {}).length == 0) {
-                        return true;
-                    } // A && B && C hoac A || B || C
-                    var ieventManager = window.ioc.resolve(common_2.IoCNames.EventManagerService);
-                    var __valArray = this["__validation"];
-                    for (var item in __valArray) {
-                        ieventManager.publish(__valArray[item]);
-                    }
-                };
                 __decorate([
                     common_3.required("learning.pages.addCourse.titleWasRequired"),
                     __metadata("design:type", String)
                 ], AddCourseModel.prototype, "title", void 0);
                 return AddCourseModel;
             }(common_4.BaseModel));
-            // let model = new AddCourseModel();
-            // console.log(model.isValid())
-            // model.title="";
-            // console.log(model.isValid());
-            // model.title="adfabfag";
-            // console.log(model.isValid());
         }
     };
 });

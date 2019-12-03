@@ -23,9 +23,11 @@ export class ConnectorService implements IConnector{
         http.post(uri,JSON.stringify(model),{headers:headers}) // Goi ham toJson se duoc goi neu co
         .map((respone:any)=>{return respone.json();})
         .subscribe((json:any)=>{
-            if(json && json.errorKey){
+            if(json && json.errorKeys && json.errorKeys.length > 0){
                 let eventManager:IEventManager = window.ioc.resolve(IoCNames.EventManagerService);
-                eventManager.publish(json.errorKey);
+                json.errorKeys.forEach((errorKey:any) => {
+                    eventManager.publish(errorKey);
+                });
                 return;
             }
             def.resolve(json);
