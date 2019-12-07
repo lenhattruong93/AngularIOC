@@ -10,7 +10,7 @@ import {BtnDefault} from "./component/buttons/btnDefault";
 import {BtnPrimary} from "./component/buttons/btnPrimary";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
-// import {Grid} from "./component/grid/grid";
+import {Grid} from "./component/grid/grid";
 @NgModule({
     imports:[
         CommonModule,
@@ -19,12 +19,12 @@ import { FormsModule } from "@angular/forms";
     declarations:[
         Page,PageContent,PageCommand,
         FormHorizontal,FormInput,FormButtons,
-        BtnDefault,BtnPrimary 
+        BtnDefault,BtnPrimary, Grid
     ],
     exports:[
         Page,PageContent,PageCommand,
         FormHorizontal,FormInput,FormButtons,
-        BtnDefault,BtnPrimary 
+        BtnDefault,BtnPrimary , Grid
     ]
 })
 export class AppCommonModule{}

@@ -7,3 +7,5 @@ window.ioc = IoCContainerFactory.create();
 window.ioc.import(regs);
 
 platformBrowserDynamic().bootstrapModule(AppModule);
+
+

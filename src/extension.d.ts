@@ -1,6 +1,7 @@
 
 declare interface Window{
     ioc:IIoCContainer;
+    $:any;
 }
 declare interface IIoCContainer{
     import(registrations:Array<IIoCRegistration>):void;

@@ -8,5 +8,6 @@ export * from "./models/promiseFactory";
 export * from "./services/iconnector";
 export * from "./ioc/iocContainerFactory";
 export * from "./services/iresourceService";
+// export * from "./component/grid/grid";
 //export * from "./component/buttons/btnDefault";
 //export * from "./ioc/builder/iocTransientBuilder";
